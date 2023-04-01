@@ -1,4 +1,5 @@
 # python3
+# Agate Šarna, 6.grupa, 221RDB224
 
 class Query:
     def __init__(self, query):
@@ -22,9 +23,11 @@ def process_queries(queries):
         if cur_query.type == 'add':
             # if we already have contact with such number,
             # we should rewrite contact's name
-            for contact in contacts:
-                if contact.number == cur_query.number:
-                    contact.name = cur_query.name
+            found = False
+            for i in range(len(contacts)):
+                if contacts[i].number == cur_query.number:
+                    contacts[i].name = cur_query.name
+                    found = True
                     break
             else: # otherwise, just add it
                 contacts.append(cur_query)
